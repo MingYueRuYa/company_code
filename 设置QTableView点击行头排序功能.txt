@@ -1,0 +1,12 @@
+
+ExistiedProjectTable->horizontalHeader()->setSortIndicatorShown(true);
+//设置TableView信号
+connect(ExistiedProjectTable->horizontalHeader(),SIGNAL(sectionClicked(int)),this,SLOT(TableViewSort(int)));
+void protOpenProjectDialog::TableViewSort(int column)
+{
+	int i = ExistiedProjectTable->horizontalHeader()->sortIndicatorOrder();
+	if(0 == i)
+		mModel->sort(column,Qt::AscendingOrder);
+	else
+		mModel->sort(column,Qt::DescendingOrder);
+}
